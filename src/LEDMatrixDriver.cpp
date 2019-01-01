@@ -159,7 +159,7 @@ void LEDMatrixDriver::_displayRow(uint8_t row)
 {
 	SPI.beginTransaction(spiSettings);
 	digitalWrite(ssPin, 0);
-	for (uint16_t d = 0; d < N; d++)
+	for (uint16_t d = N; d > 0; d--)
 	{
 		uint16_t cmd = ((row + 1) << 8) | frameBuffer[d + row*N];
 		SPI.transfer16(cmd);
